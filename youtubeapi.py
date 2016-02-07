@@ -145,8 +145,8 @@ class YoutubeAPI:
             'id': id,
             'part': 'id,snippet,contentDetails,statistics,invideoPromotion'
         }
-        if optional_params:
-            params += optional_params
+        for key, item in optional_params.iteritems():
+            params[key] = item
 
         api_data = self.api_get(api_url, params)
         return self.decode_single(api_data)
@@ -158,8 +158,8 @@ class YoutubeAPI:
             'channelId': channel_id,
             'part': 'id, snippet, status'
         }
-        if optional_params:
-            params += optional_params
+        for key, item in optional_params.iteritems():
+            params[key] = item
 
         api_data = self.api_get(api_url, params)
         return self.decode_list(api_data)
